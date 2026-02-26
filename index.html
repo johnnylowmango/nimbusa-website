@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbusa - Mobile Apps That Matter</title>
+    <meta name="description" content="Nimbusa builds innovative mobile applications for iOS and Android. Explore our portfolio of apps including Market, Senti, Move, and Builder.">
+    <link rel="icon" type="image/png" href="images/nimbusalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+        :root {
+            --bg-deep: #08090c;
+            --bg-surface: #0e1017;
+            --bg-card: rgba(255,255,255,0.03);
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text-primary: #e8e9ed;
+            --text-secondary: rgba(255,255,255,0.5);
+            --text-muted: rgba(255,255,255,0.3);
+            --accent: #7c8aff;
+            --accent-glow: rgba(124,138,255,0.15);
+            --green: #4a9e6b;
+            --blue: #5b7cc5;
+        }
+
+        html { scroll-behavior: smooth }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Grain overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 128px 128px;
+        }
+
+        /* ── Ambient glow ── */
+        .ambient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .ambient::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(124,138,255,0.06) 0%, transparent 70%);
+            animation: drift1 25s ease-in-out infinite;
+        }
+        .ambient::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -15%;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(90,180,140,0.04) 0%, transparent 70%);
+            animation: drift2 30s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%,100% { transform: translate(0,0) }
+            50% { transform: translate(8%,12%) }
+        }
+        @keyframes drift2 {
+            0%,100% { transform: translate(0,0) }
+            50% { transform: translate(-10%,-8%) }
+        }
+
+        /* ── Layout ── */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Nav ── */
+        nav {
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .nav-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .nav-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+        .nav-contact {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 18px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+        .nav-contact:hover {
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+            background: var(--bg-card);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 100px 0 40px;
+            text-align: center;
+        }
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            margin-bottom: 36px;
+            animation: fadeUp 0.8s ease both;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: fadeUp 0.8s ease 0.1s both;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 50%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+            animation: fadeUp 0.8s ease 0.2s both;
+        }
+
+        /* ── Section ── */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            padding-left: 4px;
+        }
+        .section-label::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--text-muted);
+        }
+
+        /* ── App Grid ── */
+        .apps {
+            padding: 60px 0 80px;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeUp 0.6s ease both;
+            position: relative;
+            overflow: hidden;
+        }
+        .app-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            background: radial-gradient(ellipse at top left, var(--card-glow, transparent) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .app-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .app-card:hover::before { opacity: 1 }
+
+        .app-card:nth-child(1) { animation-delay: 0.1s; --card-glow: rgba(90,124,197,0.08) }
+        .app-card:nth-child(2) { animation-delay: 0.2s; --card-glow: rgba(124,138,255,0.08) }
+        .app-card:nth-child(3) { animation-delay: 0.3s; --card-glow: rgba(74,158,107,0.08) }
+        .app-card:nth-child(4) { animation-delay: 0.4s; --card-glow: rgba(90,124,197,0.08) }
+        .app-card:nth-child(5) { animation-delay: 0.5s; --card-glow: rgba(255,255,255,0.04) }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .app-info h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 2px;
+        }
+        .app-tagline {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .app-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .badge-play {
+            background: rgba(74,158,107,0.1);
+            color: var(--green);
+            border: 1px solid rgba(74,158,107,0.15);
+        }
+        .badge-play:hover {
+            background: rgba(74,158,107,0.18);
+            border-color: rgba(74,158,107,0.3);
+        }
+        .badge-apple {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+        }
+        .badge-apple:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+        }
+        .badge svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* ── Coming Soon Card ── */
+        .app-card.coming-soon {
+            border-style: dashed;
+            opacity: 0.7;
+        }
+        .app-card.coming-soon:hover { opacity: 0.9 }
+        .coming-badge {
+            display: inline-flex;
+            padding: 5px 14px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 40px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-left {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .footer-right {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-right a {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-right a:hover { color: var(--text-primary) }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px) }
+            to   { opacity: 1; transform: translateY(0) }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 680px) {
+            .hero { padding: 60px 0 30px }
+            .app-grid { grid-template-columns: 1fr }
+            nav { padding: 20px 0 }
+            footer { flex-direction: column; text-align: center }
+            .footer-right { justify-content: center }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient"></div>
+
+    <div class="container">
+        <nav>
+            <a href="#" class="nav-brand">
+                <img src="images/nimbusalogo.png" alt="Nimbusa" class="nav-logo">
+                <span class="nav-name">NIMBUSA</span>
+            </a>
+            <a href="mailto:nimbusadev@gmail.com" class="nav-contact">Contact</a>
+        </nav>
+
+        <section class="hero">
+            <img src="images/nimbusalogo.png" alt="Nimbusa" class="hero-logo">
+            <h1>Apps built to <span>make a difference</span></h1>
+            <p>We design and develop mobile applications for iOS and Android that solve real problems and empower users.</p>
+        </section>
+
+        <section class="apps">
+            <div class="section-label">Our Apps</div>
+
+            <div class="app-grid">
+
+                <!-- Market -->
+                <div class="app-card">
+                    <div class="app-header">
+                        <img src="images/marketicon.PNG" alt="Market" class="app-icon">
+                        <div class="app-info">
+                            <h3>Market</h3>
+                            <div class="app-tagline">Buy, Sell, & Trade</div>
+                        </div>
+                    </div>
+                    <p class="app-desc">The better marketplace app with verified users. A safer, smarter way to buy, sell, and trade locally.</p>
+                    <div class="app-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.nimbusa.marketapp" target="_blank" rel="noopener" class="badge badge-play">
+                            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.492zM5.864 3.458L16.8 9.79l-2.302 2.302-8.635-8.635z"/></svg>
+                            Google Play
+                        </a>
+                        <span class="badge badge-apple">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            iOS Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Senti -->
+                <div class="app-card">
+                    <div class="app-header">
+                        <img src="images/sentiIcon.PNG" alt="Senti" class="app-icon">
+                        <div class="app-info">
+                            <h3>Senti</h3>
+                            <div class="app-tagline">Use Your Power</div>
+                        </div>
+                    </div>
+                    <p class="app-desc">The world's first sentiment index. Vote on companies, score them, and make your voice heard in the marketplace.</p>
+                    <div class="app-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.nimbusa.senti" target="_blank" rel="noopener" class="badge badge-play">
+                            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.492zM5.864 3.458L16.8 9.79l-2.302 2.302-8.635-8.635z"/></svg>
+                            Google Play
+                        </a>
+                        <span class="badge badge-apple">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            iOS Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Move -->
+                <div class="app-card">
+                    <div class="app-header">
+                        <img src="images/moveicon.PNG" alt="Move" class="app-icon">
+                        <div class="app-info">
+                            <h3>Move</h3>
+                            <div class="app-tagline">Relocation Made Easy</div>
+                        </div>
+                    </div>
+                    <p class="app-desc">Takes the stress out of moving. Find movers, track your relocation, and settle into your new home with ease.</p>
+                    <div class="app-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.nimbusa.moveapp" target="_blank" rel="noopener" class="badge badge-play">
+                            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.492zM5.864 3.458L16.8 9.79l-2.302 2.302-8.635-8.635z"/></svg>
+                            Google Play
+                        </a>
+                        <span class="badge badge-apple">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            iOS Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Builder -->
+                <div class="app-card">
+                    <div class="app-header">
+                        <img src="images/buildericon.PNG" alt="Builder" class="app-icon">
+                        <div class="app-info">
+                            <h3>Builder</h3>
+                            <div class="app-tagline">Your Local Trades Hub</div>
+                        </div>
+                    </div>
+                    <p class="app-desc">Connects quality with trust. The easiest way for contractors and tradespeople to connect with clients who need their skills.</p>
+                    <div class="app-badges">
+                        <span class="badge badge-apple">
+                            <svg viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.396 12l2.302-2.492zM5.864 3.458L16.8 9.79l-2.302 2.302-8.635-8.635z"/></svg>
+                            Google Play - In Review
+                        </span>
+                        <span class="badge badge-apple">
+                            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            iOS Coming Soon
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Coming Soon -->
+                <div class="app-card coming-soon">
+                    <div class="app-header">
+                        <img src="images/gavelicon.PNG" alt="Coming Soon" class="app-icon" style="opacity:0.6">
+                        <div class="app-info">
+                            <h3>More on the Way</h3>
+                            <div class="app-tagline" style="color: var(--text-muted)">Stay Tuned</div>
+                        </div>
+                    </div>
+                    <p class="app-desc">We're always building. New apps are in development and will be announced here when they're ready.</p>
+                    <div class="app-badges">
+                        <span class="coming-badge">Coming Soon</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-left">&copy; 2025 Nimbusa. All rights reserved.</div>
+            <div class="footer-right">
+                <a href="mailto:nimbusadev@gmail.com">nimbusadev@gmail.com</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
