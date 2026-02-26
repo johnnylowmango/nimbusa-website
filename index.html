@@ -31,7 +31,21 @@
 
         body {
             font-family: 'Outfit', sans-serif;
-            background: var(--bg-deep);
+            background:
+                radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
+                radial-gradient(ellipse at 50% 0%, rgba(60,60,70,0.4) 0%, transparent 60%),
+                var(--bg-deep);
+            background-size:
+                6px 6px,
+                6px 6px,
+                100% 100%,
+                100% 100%;
+            background-position:
+                0 0,
+                3px 3px,
+                0 0,
+                0 0;
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
