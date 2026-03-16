@@ -292,6 +292,16 @@
             align-items: center;
             gap: 16px;
         }
+        .coming-soon-icons {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .coming-soon-icons .app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+        }
         .app-icon {
             width: 64px;
             height: 64px;
@@ -558,7 +568,10 @@
                 <!-- Coming Soon -->
                 <div class="app-card coming-soon">
                     <div class="app-header">
-                        <img src="images/gavelicon.PNG" alt="Coming Soon" class="app-icon" style="opacity:0.6">
+                        <div class="coming-soon-icons">
+                            <img src="images/gavelicon.PNG" alt="Coming Soon" class="app-icon" style="opacity:0.6">
+                            <img src="images/quedicon.png" alt="Qued" class="app-icon" style="opacity:0.6">
+                        </div>
                         <div class="app-info">
                             <h3>More on the Way</h3>
                             <div class="app-tagline" style="color: var(--text-muted)">Stay Tuned</div>
