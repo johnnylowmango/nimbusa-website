@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal | Nimbusa</title>
+    <meta name="description" content="Privacy policies, terms of service, and legal information for Nimbusa apps.">
+    <link rel="icon" type="image/png" href="../images/nimbusalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root {
+            --bg-deep: #08090c;
+            --bg-card: rgba(255,255,255,0.03);
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text-primary: #e8e9ed;
+            --text-secondary: rgba(255,255,255,0.5);
+            --text-muted: rgba(255,255,255,0.3);
+            --accent: #7c8aff;
+        }
+        html { scroll-behavior: smooth }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        nav {
+            max-width: 720px; margin: 0 auto; padding: 28px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .nav-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; }
+        .nav-name {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 100; font-size: 1.1rem; color: var(--text-primary); letter-spacing: 0.15em;
+        }
+        .nav-back {
+            font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;
+            padding: 8px 18px; border: 1px solid var(--border-subtle); border-radius: 100px; transition: all 0.3s ease;
+        }
+        .nav-back:hover { border-color: var(--border-hover); color: var(--text-primary); background: var(--bg-card); }
+
+        h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
+            padding: 48px 0 8px;
+        }
+        .subtitle { color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 40px; }
+
+        .app-list { display: flex; flex-direction: column; gap: 16px; }
+
+        .app-link {
+            display: flex; align-items: center; gap: 16px;
+            padding: 20px 24px; border-radius: 16px; text-decoration: none;
+            background: linear-gradient(145deg, rgba(30,32,40,0.95) 0%, rgba(18,20,26,0.95) 100%);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+        .app-link:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+        .app-link img { width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0; }
+
+        .app-link-info { flex: 1; }
+        .app-link-info h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+        .app-link-info p { font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; }
+
+        .app-link .arrow { color: var(--text-muted); font-size: 1.2rem; transition: transform 0.3s ease; }
+        .app-link:hover .arrow { transform: translateX(4px); color: var(--text-secondary); }
+
+        .coming-soon { opacity: 0.5; pointer-events: none; }
+        .coming-badge {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-muted); border: 1px solid var(--border-subtle);
+            padding: 3px 10px; border-radius: 100px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-subtle); margin-top: 48px; padding: 32px 0;
+            font-size: 0.82rem; color: var(--text-muted); text-align: center;
+        }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: var(--text-primary); }
+
+        @media (max-width: 680px) { h1 { padding-top: 32px; font-size: 1.6rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../" class="nav-brand">
+            <img src="../images/nimbusalogo.png" alt="Nimbusa" class="nav-logo">
+            <span class="nav-name">NIMBUSA</span>
+        </a>
+        <a href="../" class="nav-back">Home</a>
+    </nav>
+
+    <div class="container">
+        <h1>Legal</h1>
+        <p class="subtitle">Privacy policies, terms of service, and legal information for our apps.</p>
+
+        <div class="app-list">
+            <a href="https://marketapp-23a27.web.app/privacy" class="app-link">
+                <img src="../images/marketicon.PNG" alt="Market">
+                <div class="app-link-info">
+                    <h3>Market</h3>
+                    <p>Buy, Sell, & Trade</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="https://sentiapp-cdc81.web.app/privacy" class="app-link">
+                <img src="../images/sentiIcon.PNG" alt="Senti">
+                <div class="app-link-info">
+                    <h3>Senti</h3>
+                    <p>Use Your Power</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="https://moveapp-55ce6.web.app/privacy" class="app-link">
+                <img src="../images/moveicon.PNG" alt="Move">
+                <div class="app-link-info">
+                    <h3>Move</h3>
+                    <p>Relocation Made Easy</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="https://contractapp-e5c38.web.app/privacy" class="app-link">
+                <img src="../images/buildericon.PNG" alt="Builder">
+                <div class="app-link-info">
+                    <h3>Builder</h3>
+                    <p>Your Local Trades Hub</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="qued/" class="app-link">
+                <img src="../images/quedicon.png" alt="Que'd">
+                <div class="app-link-info">
+                    <h3>Que'd</h3>
+                    <p>Games While You Wait</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <div class="app-link coming-soon">
+                <img src="../images/gavelicon.PNG" alt="Gavel">
+                <div class="app-link-info">
+                    <h3>Gavel</h3>
+                    <p>Coming Soon</p>
+                </div>
+                <span class="coming-badge">Coming Soon</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Nimbusa. All rights reserved. &nbsp;&middot;&nbsp; <a href="mailto:nimbusadev@gmail.com">nimbusadev@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
