@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2U Legal | Nimbusa</title>
+    <meta name="description" content="Privacy policy and terms of service for 2U by Nimbusa.">
+    <link rel="icon" type="image/png" href="../../images/nimbusalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root {
+            --bg-deep: #08090c;
+            --bg-card: rgba(255,255,255,0.03);
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --text-primary: #e8e9ed;
+            --text-secondary: rgba(255,255,255,0.5);
+            --text-muted: rgba(255,255,255,0.3);
+            --accent: #FF6B00;
+        }
+        html { scroll-behavior: smooth }
+        body {
+            font-family: 'Outfit', sans-serif; background: var(--bg-deep);
+            color: var(--text-primary); min-height: 100vh; -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        nav {
+            max-width: 720px; margin: 0 auto; padding: 28px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .nav-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; }
+        .nav-name {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 100; font-size: 1.1rem; color: var(--text-primary); letter-spacing: 0.15em;
+        }
+        .nav-back {
+            font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;
+            padding: 8px 18px; border: 1px solid var(--border-subtle); border-radius: 100px; transition: all 0.3s ease;
+        }
+        .nav-back:hover { border-color: var(--border-hover); color: var(--text-primary); background: var(--bg-card); }
+
+        .header { padding: 48px 0 32px; text-align: center; }
+        .header img { width: 80px; height: 80px; border-radius: 20px; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .header h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px;
+        }
+        .header p { color: var(--text-secondary); font-weight: 300; }
+
+        .links { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+        .legal-link {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 24px; border-radius: 16px; text-decoration: none;
+            background: linear-gradient(145deg, rgba(30,32,40,0.95) 0%, rgba(18,20,26,0.95) 100%);
+            border: 1px solid var(--border-subtle); transition: all 0.3s ease;
+        }
+        .legal-link:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .legal-link h3 { font-size: 1.05rem; font-weight: 500; color: var(--text-primary); }
+        .legal-link p { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; margin-top: 2px; }
+        .legal-link .arrow { color: var(--text-muted); font-size: 1.2rem; transition: transform 0.3s ease; }
+        .legal-link:hover .arrow { transform: translateX(4px); color: var(--accent); }
+
+        footer {
+            border-top: 1px solid var(--border-subtle); margin-top: 48px; padding: 32px 0;
+            font-size: 0.82rem; color: var(--text-muted); text-align: center;
+        }
+        footer a { color: var(--text-secondary); text-decoration: none; }
+        footer a:hover { color: var(--text-primary); }
+
+        @media (max-width: 680px) { .header { padding-top: 32px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../" class="nav-brand">
+            <img src="../../images/nimbusalogo.png" alt="Nimbusa" class="nav-logo">
+            <span class="nav-name">NIMBUSA</span>
+        </a>
+        <a href="../" class="nav-back">All Apps</a>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <img src="../../images/2uicon.png" alt="2U">
+            <h1>2U</h1>
+            <p>The Mechanic Comes to You</p>
+        </div>
+
+        <div class="links">
+            <a href="privacy.html" class="legal-link">
+                <div>
+                    <h3>Privacy Policy</h3>
+                    <p>How we collect, use, and protect your data</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="terms.html" class="legal-link">
+                <div>
+                    <h3>Terms of Service</h3>
+                    <p>Rules and conditions for using the app</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="delete-account.html" class="legal-link">
+                <div>
+                    <h3>Delete Account</h3>
+                    <p>Request account and data deletion</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="mailto:nimbusadev@gmail.com" class="legal-link">
+                <div>
+                    <h3>Contact Support</h3>
+                    <p>nimbusadev@gmail.com</p>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Nimbusa. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
