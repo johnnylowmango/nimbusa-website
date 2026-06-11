@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payout Setup Complete - 2U | Nimbusa</title>
+    <meta name="description" content="Your 2U payout setup is complete. Return to the app to continue.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="../images/nimbusalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root {
+            --bg-deep: #08090c;
+            --bg-card: rgba(255,255,255,0.03);
+            --border-subtle: rgba(255,255,255,0.06);
+            --text-primary: #e8e9ed;
+            --text-secondary: rgba(255,255,255,0.5);
+            --text-muted: rgba(255,255,255,0.3);
+            --accent: #FF6B00;
+            --green: #22c55e;
+        }
+        body {
+            font-family: 'Outfit', sans-serif; background: var(--bg-deep);
+            color: var(--text-primary); min-height: 100vh; -webkit-font-smoothing: antialiased;
+            display: flex; align-items: center; justify-content: center; padding: 24px;
+        }
+        .card {
+            max-width: 420px; width: 100%; text-align: center;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 20px; padding: 40px 28px;
+        }
+        .icon {
+            width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 24px;
+            background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .icon svg { width: 36px; height: 36px; stroke: var(--green); }
+        h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px;
+        }
+        p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; font-weight: 300; margin-bottom: 8px; }
+        .hint { color: var(--text-muted); font-size: 0.82rem; margin-top: 20px; }
+        .brand { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; opacity: 0.7; }
+        .brand img { width: 24px; height: 24px; border-radius: 6px; }
+        .brand span {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 100; font-size: 0.85rem; letter-spacing: 0.15em; color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6L9 17l-5-5"/>
+            </svg>
+        </div>
+        <h1>You're all set</h1>
+        <p>Thanks for setting up your payout details with Stripe.</p>
+        <p><strong>Return to the 2U app</strong> — your payout status will update automatically. If it still shows as pending, tap <strong>Refresh</strong> on the Payout Settings screen.</p>
+        <p class="hint">You can safely close this window.</p>
+        <div class="brand">
+            <img src="../images/2uicon.png" alt="2U">
+            <span>2U &nbsp;BY NIMBUSA</span>
+        </div>
+    </div>
+</body>
+</html>
