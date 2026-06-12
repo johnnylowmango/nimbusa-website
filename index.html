@@ -115,18 +115,25 @@
         .floodlights::after {
             content: '';
             position: absolute;
-            top: -10%;
-            width: 65%;
-            height: 120%;
-            /* warm, natural-bulb yellow fading toward the center */
-            background: radial-gradient(ellipse 80% 60% at var(--fx) 50%,
-                rgba(255,214,140,0.10) 0%,
-                rgba(255,196,110,0.05) 35%,
-                transparent 70%);
-            filter: blur(40px);
+            inset: 0;
+            filter: blur(50px);
         }
-        .floodlights::before { left: 0;  --fx: 0%; }
-        .floodlights::after  { right: 0; --fx: 100%; }
+        /* left beam: rises from the bottom-left corner, angled ~45° up toward center */
+        .floodlights::before {
+            background: conic-gradient(from 0deg at 0% 100%,
+                transparent 28deg,
+                rgba(255,252,245,0.11) 45deg,
+                rgba(255,252,245,0.05) 55deg,
+                transparent 64deg);
+        }
+        /* right beam: rises from the bottom-right corner, angled ~45° up toward center */
+        .floodlights::after {
+            background: conic-gradient(from 0deg at 100% 100%,
+                transparent 296deg,
+                rgba(255,252,245,0.05) 305deg,
+                rgba(255,252,245,0.11) 315deg,
+                transparent 332deg);
+        }
 
         /* ── Layout ── */
         .container {
