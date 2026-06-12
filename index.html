@@ -103,6 +103,31 @@
             50% { transform: translate(-10%,-8%) }
         }
 
+        /* ── Floodlights: warm light washing in from both edges, spotlighting center ── */
+        .floodlights {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .floodlights::before,
+        .floodlights::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            width: 65%;
+            height: 120%;
+            /* warm, natural-bulb yellow fading toward the center */
+            background: radial-gradient(ellipse 80% 60% at var(--fx) 50%,
+                rgba(255,214,140,0.10) 0%,
+                rgba(255,196,110,0.05) 35%,
+                transparent 70%);
+            filter: blur(40px);
+        }
+        .floodlights::before { left: 0;  --fx: 0%; }
+        .floodlights::after  { right: 0; --fx: 100%; }
+
         /* ── Layout ── */
         .container {
             position: relative;
@@ -547,6 +572,7 @@
 </head>
 <body>
     <div class="ambient"></div>
+    <div class="floodlights"></div>
 
     <div class="container">
 
